@@ -20,22 +20,26 @@ It's methods also sends proper Broadcasts, which are handy for reacting to conne
   
 ### **boolean** `findPairedDevice(Context context, String device_address)`  
   Finds paired device with given address and saves it in static variable as current device for later use  
+  Can send broadcasts: `UNABLE_TO_CLOSE_SOCKET` `PAIRED_DEVICE_FOUND`  
   ***context***: needed for sending broadcasts  
   ***device_address***: MAC address of paired bluetooth device which we want to find  
   ***return***: whether device was found or not  
 
 ### **boolean** `connectWithDevice(Context context)`  
   Establishes connection with founded device. Should be used on separate Thread as it would block the one it'll be called on during connection  
+  Can send broadcasts: `UNABLE_TO_GET_SOCKET` `UNABLE_TO_CLOSE_SOCKET` `UNABLE_TO_SET_IO_STREAM` `CONNECTING` `CONNECTED`  
   ***context***: needed for sending broadcasts  
   ***return***: whether device was found or not  
   
 ### **void** `sendData(Context context, String message)`  
   Sends data to currently connected device  
+  Can send broadcasts: `UNABLE_TO_SEND_DATA`  
   ***context***: needed for sending broadcasts  
   ***message***: message to send to a device  
   
 ### **String** `readData(Context context)`  
   Reads data from curerntly connected device  
+  Can send broadcasts: `UNABLE_TO_READ_DATA`  
   ***context***: needed for sending broadcasts  
   ***return***: read data  
 </details>  

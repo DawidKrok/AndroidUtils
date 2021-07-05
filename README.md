@@ -1,5 +1,21 @@
 # BluetoothHandler
-Module with basic Bluetooth connection handling
+Library with basic Bluetooth connection handling
+
+To use this Library add this to Your root `build.gradle`:  
+```Kotlin
+  allprojects {
+    repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+and the dependency in Yours app module `build.gradle`:
+```Kotlin
+  dependencies {
+      implementation 'com.github.DawidKrok:BluetoothHandler:0.0.3'
+	}
+```
 
 # `BthHandler`
 Main class with static methods for handling Bluetooth Connection!  

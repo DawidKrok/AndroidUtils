@@ -5,10 +5,10 @@ To use this Libraries add this to Your root `build.gradle`:
 ```Kotlin
   allprojects {
     repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+      ...
+      maven { url 'https://jitpack.io' }
+    }
+  }
 ```
 
 # `BthHandler`
@@ -18,8 +18,8 @@ It's methods also sends proper Broadcasts, which are handy for reacting to conne
 To use it add this dependency in Yours app module `build.gradle`:
 ```Kotlin
   dependencies {
-      implementation 'com.github.DawidKrok.AndroidUtils:BluetoothHandler:0.0.4'
-	}
+    implementation 'com.github.DawidKrok.AndroidUtils:BluetoothHandler:0.0.4'
+  }
 ```
 
 <details>

@@ -1,7 +1,7 @@
-# Android Utils
-Collection of basic utility libraries
+# Bluetooth Handler
+Library with basic Bluetooth handling 
 
-To use this Libraries add this to Your root `build.gradle`:  
+To use this Library add this to Your root `build.gradle`:  
 ```Kotlin
   allprojects {
     repositories {
@@ -10,17 +10,16 @@ To use this Libraries add this to Your root `build.gradle`:
     }
   }
 ```
+And add this dependency in Yours app module `build.gradle`:  
+```Kotlin
+  dependencies {
+    implementation 'com.github.DawidKrok:BluetoothHandler:0.0.4'
+  }
+```
 
 # `BthHandler`
 Main class with static methods for handling Bluetooth Connection!  
 It's methods also sends proper Broadcasts, which are handy for reacting to connection process from anywhere in your project
-
-To use it add this dependency in Yours app module `build.gradle`:
-```Kotlin
-  dependencies {
-    implementation 'com.github.DawidKrok.AndroidUtils:BluetoothHandler:0.0.4'
-  }
-```
 
 <details>
   <summary>METHODS</summary>

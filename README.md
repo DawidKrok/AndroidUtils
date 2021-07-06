@@ -54,7 +54,7 @@ It's methods also sends proper Broadcasts, which are handy for reacting to conne
   ***message***: message to send to a device  
   
 ### **String** `readData(Context context)`  
-  Reads data from curerntly connected device  
+  Reads data from currently connected device  
   Can send broadcasts: `UNABLE_TO_READ_DATA`  
   ***context***: needed for sending broadcasts  
   ***return***: read data  

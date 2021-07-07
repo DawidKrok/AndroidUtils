@@ -1,5 +1,21 @@
-# BluetoothHandler
-Module with basic Bluetooth connection handling
+# Bluetooth Handler
+Library with basic Bluetooth handling 
+
+To use this Library add this to Your root `build.gradle`:  
+```Kotlin
+  allprojects {
+    repositories {
+      ...
+      maven { url 'https://jitpack.io' }
+    }
+  }
+```
+And add this dependency in Yours app module `build.gradle`:  
+```Kotlin
+  dependencies {
+    implementation 'com.github.DawidKrok:BluetoothHandler:0.0.4'
+  }
+```
 
 # `BthHandler`
 Main class with static methods for handling Bluetooth Connection!  
@@ -38,7 +54,7 @@ It's methods also sends proper Broadcasts, which are handy for reacting to conne
   ***message***: message to send to a device  
   
 ### **String** `readData(Context context)`  
-  Reads data from curerntly connected device  
+  Reads data from currently connected device  
   Can send broadcasts: `UNABLE_TO_READ_DATA`  
   ***context***: needed for sending broadcasts  
   ***return***: read data  

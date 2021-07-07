@@ -80,7 +80,7 @@ Abstract class extending `BroadcastReceiver` for easier responding to `Broadcast
 <details>
   <summary>METHODS</summary>  
   
-  ### **void** `onReceive(Context context, Intent intent)`  
+  ### **void** `onReceive(Context context, Intent intent)``  
     Inherited from `BroadcastReceiver`. Based on received `Broadcast` calls corresponding to it function.  
     Those functions have to be implemented in subclass  
   

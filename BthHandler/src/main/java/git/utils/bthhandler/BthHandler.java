@@ -37,9 +37,6 @@ public class BthHandler {
             /** Failed to close BluetoothSocket */
             UNABLE_TO_CLOSE_SOCKET = "git.utils.BthHandler.unable_to_close_socket",
 
-            /** Failed to connect with a device */
-            UNABLE_TO_CONNECT = "git.utils.BthHandler.unable_to_connect",
-
             /** Failed to obtain InputStream and OutputStream from device */
             UNABLE_TO_SET_IO_STREAM = "git.utils.BthHandler.unable_to_set_io_stream",
 
@@ -146,10 +143,10 @@ public class BthHandler {
 
         // try connecting with device
         try {
+            context.sendBroadcast(new Intent(CONNECTING));
             socket.connect();
         } catch (IOException connectException) {
             // Unable to connect; close the socket and return.
-            context.sendBroadcast(new Intent(UNABLE_TO_CONNECT));
             try {
                 socket.close();
             } catch (IOException closeException) {
@@ -158,8 +155,6 @@ public class BthHandler {
 
             return false;
         }
-
-        context.sendBroadcast(new Intent(CONNECTING));
 
         // establish I/O stream
         try {

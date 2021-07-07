@@ -40,6 +40,9 @@ public class BthHandler {
             /** Failed to obtain InputStream and OutputStream from device */
             UNABLE_TO_SET_IO_STREAM = "git.utils.BthHandler.unable_to_set_io_stream",
 
+            /** Failed to connect with device */
+            UNABLE_TO_CONNECT = "git.utils.BthHandler.unable_to_connect",
+
             /** Failed to send data to device */
             UNABLE_TO_SEND_DATA = "git.utils.BthHandler.unable_to_send_data",
 
@@ -142,19 +145,19 @@ public class BthHandler {
         }
 
         // try connecting with device
-        try {
-            context.sendBroadcast(new Intent(CONNECTING));
-            socket.connect();
-        } catch (IOException connectException) {
+        try { socket.connect(); }
+        catch (IOException connectException) {
             // Unable to connect; close the socket and return.
-            try {
-                socket.close();
-            } catch (IOException closeException) {
+            context.sendBroadcast(new Intent(UNABLE_TO_CONNECT));
+
+            try { socket.close(); }
+            catch (IOException closeException) {
                 context.sendBroadcast(new Intent(UNABLE_TO_CLOSE_SOCKET));
             }
 
             return false;
         }
+        context.sendBroadcast(new Intent(CONNECTING));
 
         // establish I/O stream
         try {

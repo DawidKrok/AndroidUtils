@@ -95,31 +95,31 @@ Abstract class extending `BroadcastReceiver` for easier responding to `Broadcast
   Their bodies are empty by default, so their functionality have to be implemented in a subclass  
 
   **void** `unableToGetSocket()`  
-    will be called in response to `UNABLE_TO_GET_SOCKET` `Broadcast`  
+    will be called in response to `UNABLE_TO_GET_SOCKET` Broadcast  
 
   **void** `unableToCloseSocket()`  
-    will be called in response to `UNABLE_TO_CLOSE_SOCKET` `Broadcast`  
+    will be called in response to `UNABLE_TO_CLOSE_SOCKET` Broadcast  
 
   **void** `unableToConnect()`  
-    will be called in response to `UNABLE_TO_CONNECT` `Broadcast`  
+    will be called in response to `UNABLE_TO_CONNECT` Broadcast  
 
   **void** `unableToSetIOStream()`  
-    will be called in response to `UNABLE_TO_SET_IO_STREAM` `Broadcast`  
+    will be called in response to `UNABLE_TO_SET_IO_STREAM` Broadcast  
 
   **void** `unableToSendData()`  
-    will be called in response to `UNABLE_TO_SEND_DATA` `Broadcast`  
+    will be called in response to `UNABLE_TO_SEND_DATA` Broadcast  
 
   **void** `unableToReadData()`  
-    will be called in response to `UNABLE_TO_READ_DATA` `Broadcast`  
+    will be called in response to `UNABLE_TO_READ_DATA` Broadcast  
 
   **void** `pairedDeviceFound()`  
-    will be called in response to `PAIRED_DEVICE_FOUND` `Broadcast`  
+    will be called in response to `PAIRED_DEVICE_FOUND` Broadcast  
 
   **void** `connecting()`  
-    will be called in response to `CONNECTING` `Broadcast`  
+    will be called in response to `CONNECTING` Broadcast  
 
   **void** `connected()`  
-    will be called in response to `CONNECTED` `Broadcast`  
+    will be called in response to `CONNECTED` Broadcast  
 
   </details> 
 </details>  

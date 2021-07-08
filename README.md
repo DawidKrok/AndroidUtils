@@ -80,47 +80,46 @@ Abstract class extending `BroadcastReceiver` for easier responding to `Broadcast
 <details>
   <summary>METHODS</summary>
 
-  ### **void** `onReceive(Context context, Intent intent)`
-    Inherited from `BroadcastReceiver`. Based on received `Broadcast` calls corresponding to it function.  
-    Those functions have to be implemented in subclass  
+### **void** `onReceive(Context context, Intent intent)`
+  Inherited from `BroadcastReceiver`. Based on received `Broadcast` calls corresponding to it function.  
+  Those functions have to be implemented in subclass  
 
-  ### **void** `registerReceiver(Context context)`  
-    Registers Receiver to listen for all `Broadcasts` send by `BthHandler`  
-    ***context***: context on which Receiver will be registered  
+### **void** `registerReceiver(Context context)`  
+  Registers Receiver to listen for all `Broadcasts` send by `BthHandler`  
+  ***context***: context on which Receiver will be registered  
 
-  <details>  
-    <summary>RESPONSE FUNCTIONS</summary>  
+<details>
+  <summary>RESPONSE FUNCTIONS</summary>
 
-    Those are functions that are called in response to `Broadcasts` from `BthHandler`  
-    Their bodies are empty by default, so their functionality have to be implemented in a subclass  
+  Those are functions that are called in response to `Broadcasts` from `BthHandler`  
+  Their bodies are empty by default, so their functionality have to be implemented in a subclass  
 
+  **void** `unableToGetSocket()`  
+    will be called in response to `UNABLE_TO_GET_SOCKET` `Broadcast`  
 
-    **void** `unableToGetSocket()`  
-      will be called in response to `UNABLE_TO_GET_SOCKET` `Broadcast`  
+  public void unableToCloseSocket()
+    will be called in response to `UNABLE_TO_CLOSE_SOCKET` `Broadcast`  
 
-    public void unableToCloseSocket()
-      will be called in response to `UNABLE_TO_CLOSE_SOCKET` `Broadcast`  
+  public void unableToConnect()
+    will be called in response to `UNABLE_TO_CONNECT` `Broadcast`  
 
-    public void unableToConnect()
-      will be called in response to `UNABLE_TO_CONNECT` `Broadcast`  
+  public void unableToSetIOStream()
+    will be called in response to `UNABLE_TO_SET_IO_STREAM` `Broadcast`  
 
-    public void unableToSetIOStream()
-      will be called in response to `UNABLE_TO_SET_IO_STREAM` `Broadcast`  
+  public void unableToSendData()  
+    will be called in response to `UNABLE_TO_SEND_DATA` `Broadcast`  
 
-    public void unableToSendData()  
-      will be called in response to `UNABLE_TO_SEND_DATA` `Broadcast`  
+  public void unableToReadData()  
+    will be called in response to `UNABLE_TO_READ_DATA` `Broadcast`  
 
-    public void unableToReadData()  
-      will be called in response to `UNABLE_TO_READ_DATA` `Broadcast`  
+  public void pairedDeviceFound()  
+    will be called in response to `PAIRED_DEVICE_FOUND` `Broadcast`  
 
-    public void pairedDeviceFound()  
-      will be called in response to `PAIRED_DEVICE_FOUND` `Broadcast`  
+  public void connecting()  
+    will be called in response to `CONNECTING` `Broadcast`  
 
-    public void connecting()  
-      will be called in response to `CONNECTING` `Broadcast`  
-
-    public void connected()  
-      will be called in response to `CONNECTED` `Broadcast`  
+  public void connected()  
+    will be called in response to `CONNECTED` `Broadcast`  
 
   </details> 
 </details>  

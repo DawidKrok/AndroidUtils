@@ -97,28 +97,28 @@ Abstract class extending `BroadcastReceiver` for easier responding to `Broadcast
   **void** `unableToGetSocket()`  
     will be called in response to `UNABLE_TO_GET_SOCKET` `Broadcast`  
 
-  public void unableToCloseSocket()
+  **void** `unableToCloseSocket()`  
     will be called in response to `UNABLE_TO_CLOSE_SOCKET` `Broadcast`  
 
-  public void unableToConnect()
+  **void** `unableToConnect()`  
     will be called in response to `UNABLE_TO_CONNECT` `Broadcast`  
 
-  public void unableToSetIOStream()
+  **void** `unableToSetIOStream()`  
     will be called in response to `UNABLE_TO_SET_IO_STREAM` `Broadcast`  
 
-  public void unableToSendData()  
+  **void** `unableToSendData()`  
     will be called in response to `UNABLE_TO_SEND_DATA` `Broadcast`  
 
-  public void unableToReadData()  
+  **void** `unableToReadData()`  
     will be called in response to `UNABLE_TO_READ_DATA` `Broadcast`  
 
-  public void pairedDeviceFound()  
+  **void** `pairedDeviceFound()`  
     will be called in response to `PAIRED_DEVICE_FOUND` `Broadcast`  
 
-  public void connecting()  
+  **void** `connecting()`  
     will be called in response to `CONNECTING` `Broadcast`  
 
-  public void connected()  
+  **void** `connected()`  
     will be called in response to `CONNECTED` `Broadcast`  
 
   </details> 

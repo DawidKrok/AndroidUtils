@@ -122,5 +122,5 @@ Abstract class extending `BroadcastReceiver` for easier responding to `Broadcast
     public void connected()  
       will be called in response to `CONNECTED` `Broadcast`  
 
-  </details  
+  </details> 
 </details>  

@@ -152,6 +152,8 @@ public class BthHandler {
             throw e;
         }
 
+        context.sendBroadcast(new Intent(CONNECTING));
+
         // try connecting with device
         try { socket.connect(); }
         catch (IOException connectException) {
@@ -165,7 +167,7 @@ public class BthHandler {
             }
             throw connectException;
         }
-        context.sendBroadcast(new Intent(CONNECTING));
+
 
         // establish I/O stream
         try {

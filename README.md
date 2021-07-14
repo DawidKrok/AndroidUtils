@@ -14,7 +14,7 @@ To use this Library add this to Your root `build.gradle`:
 And add this dependency in Yours app module `build.gradle`:  
 ```Kotlin
   dependencies {
-    implementation 'com.github.DawidKrok:BluetoothHandler:0.0.4'
+    implementation 'com.github.DawidKrok:BluetoothHandler:0.1.1'
   }
 ```
 

@@ -103,16 +103,7 @@ public class BthHandler {
      * @param context: context of application - for sending broadcasts
      * @param device_address: MAC address of paired bluetooth device which we want to find
      * @return whether device was found or not*/
-    public static boolean findPairedDevice(Context context, String device_address) throws IOException {
-        //Close eventual connection
-        if(socket != null)
-            try {
-                socket.close();
-            } catch (IOException e) {
-                context.sendBroadcast(new Intent(UNABLE_TO_CLOSE_SOCKET));
-                throw e;
-            }
-
+    public static boolean findPairedDevice(Context context, String device_address) {
         // get set of paired devices
         Set<BluetoothDevice> pairedDevices = BthAdapter.getBondedDevices();
 
@@ -143,6 +134,15 @@ public class BthHandler {
      * @return whether this operation was successful or not */
     public static boolean connectWithDevice(Context context) throws IOException {
         if(my_device == null)   return false;
+
+        //Close eventual connection
+        if(socket != null)
+            try {
+                socket.close();
+            } catch (IOException e) {
+                context.sendBroadcast(new Intent(UNABLE_TO_CLOSE_SOCKET));
+                throw e;
+            }
 
         // try obtaining socket for connections
         try {

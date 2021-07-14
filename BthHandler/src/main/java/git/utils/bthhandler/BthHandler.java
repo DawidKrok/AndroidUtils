@@ -49,6 +49,9 @@ public class BthHandler {
             /** Failed to read data from device */
             UNABLE_TO_READ_DATA = "git.utils.BthHandler.unable_to_read_data",
 
+            /** Failed to find paired BluetoothDevice */
+            PAIRED_DEVICE_NOT_FOUND = "git.utils.BthHandler.unable_to_find_paired_device",
+
             /** Founded paired BluetoothDevice */
             PAIRED_DEVICE_FOUND = "git.utils.BthHandler.paired_device_found",
 
@@ -91,7 +94,6 @@ public class BthHandler {
                 // Notify why user must obey your laws
                 Toast.makeText(activity, "Permission must be granted to find Bluetooth devices.", Toast.LENGTH_SHORT).show();
 
-
             // Request permission.
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_BLUETOOTH);
         }
@@ -101,18 +103,21 @@ public class BthHandler {
      * @param context: context of application - for sending broadcasts
      * @param device_address: MAC address of paired bluetooth device which we want to find
      * @return whether device was found or not*/
-    public static boolean findPairedDevice(Context context, String device_address) {
+    public static boolean findPairedDevice(Context context, String device_address) throws IOException {
         //Close eventual connection
         if(socket != null)
             try {
                 socket.close();
             } catch (IOException e) {
                 context.sendBroadcast(new Intent(UNABLE_TO_CLOSE_SOCKET));
-                return false;
+                throw e;
             }
 
         // get set of paired devices
         Set<BluetoothDevice> pairedDevices = BthAdapter.getBondedDevices();
+
+        // to check if device was founded in set of paired Devices
+        boolean foundedDevice = false;
 
         if (pairedDevices.size() > 0) {
             // Seek for device with given address in paired devices
@@ -120,20 +125,23 @@ public class BthHandler {
                 if(device.getAddress().equals(device_address)) {
                     context.sendBroadcast(new Intent(PAIRED_DEVICE_FOUND));
                     my_device = device;
+                    foundedDevice = true;
                     break;
                 }
             }
         }
-
         // return whether device was found or not
-        return my_device != null;
+        if(!foundedDevice)
+            context.sendBroadcast(new Intent(PAIRED_DEVICE_NOT_FOUND));
+
+        return foundedDevice;
     }
 
     /** Establish connection with founded device (Must use {@link #findPairedDevice(Context, String)} first)
      * Should be used on separate Thread
      * @param context: context of application - for sending broadcasts
      * @return whether this operation was successful or not */
-    public static boolean connectWithDevice(Context context) {
+    public static boolean connectWithDevice(Context context) throws IOException {
         if(my_device == null)   return false;
 
         // try obtaining socket for connections
@@ -141,21 +149,21 @@ public class BthHandler {
             socket = my_device.createRfcommSocketToServiceRecord(MY_UUID);
         } catch (IOException e) {
             context.sendBroadcast(new Intent(UNABLE_TO_GET_SOCKET));
-            return false;
+            throw e;
         }
 
         // try connecting with device
         try { socket.connect(); }
         catch (IOException connectException) {
-            // Unable to connect; close the socket and return.
+            // Unable to connect; close the socket and throw Exception.
             context.sendBroadcast(new Intent(UNABLE_TO_CONNECT));
 
             try { socket.close(); }
             catch (IOException closeException) {
                 context.sendBroadcast(new Intent(UNABLE_TO_CLOSE_SOCKET));
+                throw closeException;
             }
-
-            return false;
+            throw connectException;
         }
         context.sendBroadcast(new Intent(CONNECTING));
 
@@ -165,11 +173,10 @@ public class BthHandler {
             output = socket.getOutputStream();
         } catch(IOException e) {
             context.sendBroadcast(new Intent(UNABLE_TO_SET_IO_STREAM));
-            return false;
+            throw e;
         }
 
         context.sendBroadcast(new Intent(CONNECTED));
-
         return true;
     }
 
@@ -177,12 +184,13 @@ public class BthHandler {
      * Must be connected with device first (use {@link #connectWithDevice(Context)})
      * @param context: context of application - for sending broadcasts
      * @param message: message to send */
-    public void sendData(Context context, String message) {
+    public void sendData(Context context, String message) throws IOException {
         // try sending data
         try {
             output.write(message.getBytes());
         } catch(IOException e) {
             context.sendBroadcast(new Intent(UNABLE_TO_SEND_DATA));
+            throw e;
         }
     }
 
@@ -190,7 +198,7 @@ public class BthHandler {
      * Must be connected with device first (use {@link #connectWithDevice(Context)})
      * @param context: context of application
      * @return read data */
-    public String readData(Context context) {
+    public String readData(Context context) throws IOException {
         DataInputStream mmInStream = new DataInputStream(input);
         byte[] buffer = new byte[256];
         // try returning read data
@@ -198,8 +206,7 @@ public class BthHandler {
             return new String(buffer, 0, mmInStream.read(buffer));
         } catch(Exception e) {
             context.sendBroadcast(new Intent(UNABLE_TO_READ_DATA));
+            throw e;
         }
-
-        return null;
     }
 }

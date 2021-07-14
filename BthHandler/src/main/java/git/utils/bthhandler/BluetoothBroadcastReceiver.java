@@ -25,6 +25,8 @@ public abstract class BluetoothBroadcastReceiver extends BroadcastReceiver {
                 break;
             case BthHandler.UNABLE_TO_READ_DATA:        unableToReadData();
                 break;
+            case BthHandler.PAIRED_DEVICE_NOT_FOUND:    pairedDeviceNotFound();
+                break;
             case BthHandler.PAIRED_DEVICE_FOUND:        pairedDeviceFound();
                 break;
             case BthHandler.CONNECTING:                 connecting();
@@ -33,6 +35,8 @@ public abstract class BluetoothBroadcastReceiver extends BroadcastReceiver {
                 break;
         }
     }
+
+
 
     /** Registers Receiver to listen for all Broadcasts send by BthHandler
      * (Also, friendly reminder to unregister your Receiver when you don't need it)
@@ -44,6 +48,7 @@ public abstract class BluetoothBroadcastReceiver extends BroadcastReceiver {
         intentFilter.addAction(BthHandler.UNABLE_TO_CONNECT);
         intentFilter.addAction(BthHandler.UNABLE_TO_SEND_DATA);
         intentFilter.addAction(BthHandler.UNABLE_TO_READ_DATA);
+        intentFilter.addAction(BthHandler.PAIRED_DEVICE_NOT_FOUND);
         intentFilter.addAction(BthHandler.PAIRED_DEVICE_FOUND);
         intentFilter.addAction(BthHandler.CONNECTING);
         intentFilter.addAction(BthHandler.CONNECTED);
@@ -51,21 +56,23 @@ public abstract class BluetoothBroadcastReceiver extends BroadcastReceiver {
     }
 
     /** function that'll be called in response to {@link BthHandler#UNABLE_TO_GET_SOCKET} Broadcast */
-    public void unableToGetSocket() {};
+    public void unableToGetSocket() {}
     /** function that'll be called in response to {@link BthHandler#UNABLE_TO_CLOSE_SOCKET} Broadcast */
-    public void unableToCloseSocket() {};
+    public void unableToCloseSocket() {}
     /** function that'll be called in response to {@link BthHandler#UNABLE_TO_CONNECT} Broadcast */
-    public void unableToConnect() {};
+    public void unableToConnect() {}
     /** function that'll be called in response to {@link BthHandler#UNABLE_TO_SET_IO_STREAM} Broadcast */
-    public void unableToSetIOStream() {};
+    public void unableToSetIOStream() {}
     /** function that'll be called in response to {@link BthHandler#UNABLE_TO_SEND_DATA} Broadcast */
-    public void unableToSendData() {};
+    public void unableToSendData() {}
     /** function that'll be called in response to {@link BthHandler#UNABLE_TO_READ_DATA} Broadcast */
-    public void unableToReadData() {};
+    public void unableToReadData() {}
+    /** function that'll be called in response to {@link BthHandler#PAIRED_DEVICE_NOT_FOUND} Broadcast */
+    public void pairedDeviceNotFound() {}
     /** function that'll be called in response to {@link BthHandler#PAIRED_DEVICE_FOUND} Broadcast */
-    public void pairedDeviceFound() {};
+    public void pairedDeviceFound() {}
     /** function that'll be called in response to {@link BthHandler#CONNECTING} Broadcast */
-    public void connecting() {};
+    public void connecting() {}
     /** function that'll be called in response to {@link BthHandler#CONNECTED} Broadcast */
-    public void connected() {};
+    public void connected() {}
 }

@@ -27,7 +27,7 @@ public class BthHandler {
     REQUEST_PERMISSION_BLUETOOTH = 2;
 
     // UUID for connection with device
-    public static final UUID MY_UUID = UUID.randomUUID();
+    public static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");;
 
     // Strings used for broadcasts messages
     public static final String TAG = "BthHandler",

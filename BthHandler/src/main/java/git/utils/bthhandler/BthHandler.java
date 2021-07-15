@@ -195,6 +195,15 @@ public class BthHandler {
             throw e;
         }
     }
+    public void sendData(Context context, byte[] message) throws IOException {
+        // try sending data
+        try {
+            output.write(message);
+        } catch(IOException e) {
+            context.sendBroadcast(new Intent(UNABLE_TO_SEND_DATA));
+            throw e;
+        }
+    }
 
     /** Reads data from device
      * Must be connected with device first (use {@link #connectWithDevice(Context)})

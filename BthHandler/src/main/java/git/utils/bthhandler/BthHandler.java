@@ -186,7 +186,7 @@ public class BthHandler {
      * Must be connected with device first (use {@link #connectWithDevice(Context)})
      * @param context: context of application - for sending broadcasts
      * @param message: message to send */
-    public void sendData(Context context, String message) throws IOException {
+    public static void sendData(Context context, String message) throws IOException {
         // try sending data
         try {
             output.write(message.getBytes());
@@ -195,7 +195,7 @@ public class BthHandler {
             throw e;
         }
     }
-    public void sendData(Context context, byte[] message) throws IOException {
+    public static void sendData(Context context, byte[] message) throws IOException {
         // try sending data
         try {
             output.write(message);
@@ -209,7 +209,7 @@ public class BthHandler {
      * Must be connected with device first (use {@link #connectWithDevice(Context)})
      * @param context: context of application
      * @return read data */
-    public String readData(Context context) throws IOException {
+    public static String readData(Context context) throws IOException {
         DataInputStream mmInStream = new DataInputStream(input);
         byte[] buffer = new byte[256];
         // try returning read data

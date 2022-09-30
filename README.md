@@ -1,5 +1,5 @@
 # Bluetooth Handler
-Library with basic Bluetooth handling.
+Library with basic Bluetooth handling for `Android Studios`.
 It also sends proper Broadcasts, which are handy for reacting to connection process from anywhere in your project
 
 To use this Library add this to Your root `build.gradle`:  
